@@ -1,0 +1,19 @@
+﻿@model Associativy.Taxonomies.Adapter.Settings.AssociativyTaxonomiesAdapterTypeSettings
+
+@if (Model.AvailableGraphs.Any())
+{
+    <fieldset>
+        <legend>@T("Build an Associativy graph with selected Taxonomy terms for these graphs:")</legend>
+        <ul>
+            @{ var i = 0;}
+            @foreach (var graph in Model.AvailableGraphs)
+            {
+                <li>
+                    <input type="checkbox" value="@graph.Name" class="check-box" id="@Html.FieldIdFor(m => m.GraphNames[i])" name="@Html.FieldNameFor(m => m.GraphNames)" checked="@(Model.GraphNames.Contains(graph.Name))"/>
+                    <label for="@Html.FieldIdFor(m => m.GraphNames[i])" class="forcheckbox">@graph.DisplayName</label>
+                </li>
+                i++;
+            }
+        </ul>
+    </fieldset>
+}

@@ -82,6 +82,10 @@
       <Project>{9916839C-39FC-4CEB-A5AF-89CA7E87119F}</Project>
       <Name>Orchard.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Associativy\Associativy.csproj">
+      <Project>{a8ee4964-4880-4ee1-ac0a-75492d89bbe8}</Project>
+      <Name>Associativy</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Orchard.Taxonomies\Orchard.Taxonomies.csproj">
       <Project>{e649ea64-d213-461b-87f7-d67035801443}</Project>
       <Name>Orchard.Taxonomies</Name>
@@ -90,7 +94,13 @@
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Handlers\TermsPartHandler.cs" />
+    <Compile Include="Settings\TypeSettings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\DefinitionTemplates\AssociativyTaxonomiesAdapterTypeSettings.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
