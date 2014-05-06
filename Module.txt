@@ -1,0 +1,13 @@
+﻿Name: Associativy Taxonomies Adapter
+AntiForgery: enabled
+Author: Lombiq
+Website: http://associativy.com
+Version: 1.0
+OrchardVersion: 1.8
+Description: Associativy module for automatically maintaining graphs built through Taxonomies.
+Features:
+    Associativy.Taxonomies.Adapter:
+		Name: Associativy Taxonomies Adapter
+        Description: Associativy module for automatically maintaining graphs built through Taxonomies.
+		Category: Associativy
+		Dependencies: Associativy, Orchard.Taxonomies
