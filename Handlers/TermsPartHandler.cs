@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using Associativy.GraphDiscovery;
 using Associativy.Taxonomies.Adapter.Settings;
 using Orchard.ContentManagement.Handlers;
 using Orchard.Environment;
-using Orchard.Taxonomies.Fields;
 using Orchard.Taxonomies.Models;
 
 namespace Associativy.Taxonomies.Adapter.Handlers
@@ -72,9 +69,6 @@ namespace Associativy.Taxonomies.Adapter.Handlers
                         }
                     }
                 });
-
-            //OnUnpublished<TermsPart>((context, part) => RemoveTermConnections(part));
-            //OnRemoved<TermsPart>((context, part) => RemoveTermConnections(part));
         }
 
 
@@ -82,26 +76,6 @@ namespace Associativy.Taxonomies.Adapter.Handlers
         {
             var settings = part.ContentItem.TypeDefinition.Settings.GetModel<AssociativyTaxonomiesAdapterTypeSettings>();
             return settings != null && settings.GraphNames.Any();
-        }
-
-        private void RemoveTermConnections(TermsPart part)
-        {
-            // Removal should run depending on whether the item is in a graph, it doesn't matter if it's currently set up for automatic
-            // term graph building. It may be that before it was set up, now isn't but it gets removed so  we should remove connections too.
-
-            var graphManager = _graphManagerWork.Value;
-
-            var graphs = graphManager.FindGraphsByContentTypes(part.ContentItem.ContentType);
-
-            if (!graphs.Any()) return;
-
-            foreach (var graph in graphs)
-            {
-                foreach (var term in part.Terms)
-                {
-                    graph.Services.ConnectionManager.Disconnect(part.ContentItem.Id, term.TermRecord.ContentItemRecord.Id);
-                }
-            }
         }
     }
 }
